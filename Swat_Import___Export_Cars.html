@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swat Import & Export Cars | Premium Global Vehicles</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for crisp automotive & UI icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#0f172a',
+                        },
+                        accent: {
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-amber-500 selection:text-white">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-slate-950 text-slate-300 text-xs sm:text-sm py-2 px-4 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-4">
+                <span><i class="fa-solid fa-location-dot text-amber-500 mr-1.5"></i>Main G.T. Road, Mingora, Swat, KPK</span>
+                <span class="hidden md:inline text-slate-600">|</span>
+                <span class="hidden md:inline"><i class="fa-solid fa-ship text-amber-500 mr-1.5"></i>Direct Port Clearance: Karachi & Dubai</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="tel:+923001234567" class="hover:text-white transition"><i class="fa-solid fa-phone text-amber-500 mr-1.5"></i>+92 300 1234567</a>
+                <span class="text-slate-600">|</span>
+                <span class="text-emerald-400 font-medium"><i class="fa-solid fa-circle text-[8px] mr-1.5 animate-pulse"></i>Showroom Open Today</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 rounded-xl bg-slate-900 text-amber-500 flex items-center justify-center text-xl shadow-md group-hover:bg-amber-500 group-hover:text-slate-950 transition-all duration-300">
+                        <i class="fa-solid fa-car-side"></i>
+                    </div>
+                    <div>
+                        <span class="block text-lg sm:text-xl font-extrabold tracking-tight text-slate-900 leading-none">SWAT IMPORT</span>
+                        <span class="block text-xs font-semibold tracking-widest text-amber-600 uppercase mt-1">&amp; Export Cars</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold text-slate-700">
+                    <a href="#inventory" class="hover:text-amber-600 transition">Showroom Inventory</a>
+                    <a href="#gallery" class="hover:text-amber-600 transition">Photo Gallery</a>
+                    <a href="#services" class="hover:text-amber-600 transition">Import &amp; Export</a>
+                    <a href="#calculator" class="hover:text-amber-600 transition">Duty Estimator</a>
+                    <a href="#contact" class="hover:text-amber-600 transition">Contact &amp; Location</a>
+                </nav>
+
+                <!-- Action Buttons -->
+                <div class="hidden sm:flex items-center gap-3">
+                    <button onclick="openCustomOrderModal()" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-900 text-sm font-semibold transition">
+                        Request Auction Car
+                    </button>
+                    <a href="#inventory" class="px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-amber-500 text-white hover:text-slate-950 text-sm font-semibold shadow-sm transition">
+                        Browse Cars
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="lg:hidden p-3 rounded-xl text-slate-700 hover:bg-slate-100 focus:outline-none" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 px-4 pt-3 pb-6 space-y-2 shadow-xl">
+            <a href="#inventory" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl text-base font-semibold text-slate-800 hover:bg-slate-50">Showroom Inventory</a>
+            <a href="#gallery" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl text-base font-semibold text-slate-800 hover:bg-slate-50">HD Photo Gallery</a>
+            <a href="#services" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl text-base font-semibold text-slate-800 hover:bg-slate-50">Import &amp; Export Services</a>
+            <a href="#calculator" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl text-base font-semibold text-slate-800 hover:bg-slate-50">Import Duty Estimator</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl text-base font-semibold text-slate-800 hover:bg-slate-50">Contact Showroom</a>
+            <div class="pt-3 border-t border-slate-100 flex flex-col gap-2">
+                <button onclick="toggleMobileMenu(); openCustomOrderModal();" class="w-full py-3 rounded-xl bg-amber-500 text-slate-950 font-bold text-center">
+                    Request Custom Import
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-slate-950 text-white overflow-hidden">
+        <!-- Background Automotive Image with Gradient Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1920&q=80" 
+                 onerror="this.src='https://placehold.co/1920x1080/0f172a/f59e0b?text=Swat+Import+%26+Export+Cars'"
+                 alt="Luxury SUV in Mountain Terrain" 
+                 class="w-full h-full object-cover object-center opacity-40 scale-105">
+            <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/30"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32">
+            <div class="max-w-3xl">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-400 text-xs sm:text-sm font-semibold mb-6">
+                    <i class="fa-solid fa-award"></i>
+                    <span>#1 Trusted Japanese &amp; Gulf Vehicle Importer in Swat Valley</span>
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+                    Drive Global Excellence in the Heart of <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">Swat</span>
+                </h1>
+                <p class="text-base sm:text-lg lg:text-xl text-slate-300 leading-relaxed mb-8 max-w-2xl">
+                    Verified auction-grade Japanese imports, rugged 4x4 SUVs built for northern terrains, and seamless worldwide vehicle export with 100% transparent documentation.
+                </p>
+
+                <!-- Hero CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 mb-12">
+                    <a href="#inventory" class="px-7 py-4 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-base shadow-lg shadow-amber-500/20 transition flex items-center justify-center gap-2">
+                        <span>Explore Live Stock</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <button onclick="openCustomOrderModal()" class="px-7 py-4 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white font-semibold text-base transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-gavel text-amber-400"></i>
+                        <span>Order From Japan / Dubai Auction</span>
+                    </button>
+                </div>
+
+                <!-- Key Trust Metrics -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 pt-8 border-t border-slate-800/80">
+                    <div>
+                        <p class="text-2xl sm:text-3xl font-extrabold text-white">450+</p>
+                        <p class="text-xs sm:text-sm text-slate-400 mt-1">Cars Imported &amp; Sold</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl sm:text-3xl font-extrabold text-amber-400">4.5 - 5.0</p>
+                        <p class="text-xs sm:text-sm text-slate-400 mt-1">Verified Auction Grades</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl sm:text-3xl font-extrabold text-white">100%</p>
+                        <p class="text-xs sm:text-sm text-slate-400 mt-1">Genuine Auction Sheets</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl sm:text-3xl font-extrabold text-white">15+ Yrs</p>
+                        <p class="text-xs sm:text-sm text-slate-400 mt-1">Swat Automotive Legacy</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Search & Filter Bar -->
+    <section id="inventory" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20">
+        <div class="bg-white rounded-2xl shadow-xl border border-slate-200 p-4 sm:p-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                <!-- Search Input -->
+                <div class="lg:col-span-2">
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Search Make or Model</label>
+                    <div class="relative">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                        <input type="text" id="searchInput" oninput="filterVehicles()" placeholder="e.g., Land Cruiser, Prado, Prius, Civic..." 
+                               class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 outline-none text-sm font-medium">
+                    </div>
+                </div>
+
+                <!-- Category Filter -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Vehicle Type</label>
+                    <select id="categoryFilter" onchange="filterVehicles()" class="w-full px-3.5 py-3 rounded-xl border border-slate-200 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 outline-none text-sm font-medium bg-white">
+                        <option value="ALL">All Categories</option>
+                        <option value="SUV / 4x4">SUV &amp; 4x4</option>
+                        <option value="Sedan">Luxury &amp; Hybrid Sedans</option>
+                        <option value="Hatchback">Kei &amp; Compact Hatchbacks</option>
+                        <option value="Pickup">4x4 Pickups / Trucks</option>
+                    </select>
+                </div>
+
+                <!-- Origin Filter -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Import Origin</label>
+                    <select id="originFilter" onchange="filterVehicles()" class="w-full px-3.5 py-3 rounded-xl border border-slate-200 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 outline-none text-sm font-medium bg-white">
+                        <option value="ALL">All Origins</option>
+                        <option value="Japan Import">Japan Auction Import</option>
+                        <option value="Dubai / UAE">Dubai / UAE Spec</option>
+                        <option value="UK Spec">UK Spec</option>
+                        <option value="Ready for Export">Ready for Export</option>
+                    </select>
+                </div>
+
+                <!-- Reset / Sort -->
+                <div class="flex flex-col justify-end">
+                    <button onclick="resetFilters()" class="w-full py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-rotate-right"></i>
+                        <span>Reset Filters</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Showroom Inventory Grid -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+            <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-amber-600">Current Showroom Stock</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">Featured Import &amp; Export Vehicles</h2>
+            </div>
+            <div class="flex items-center gap-3">
+                <span id="vehicleCount" class="text-sm font-semibold text-slate-600 bg-slate-200/70 px-3.5 py-1.5 rounded-full">Showing 8 Vehicles</span>
+                <select id="sortSelect" onchange="filterVehicles()" class="px-3.5 py-2 rounded-xl border border-slate-200 text-sm font-semibold bg-white text-slate-700 outline-none">
+                    <option value="featured">Sort: Featured</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="year-new">Model Year: Newest</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Dynamic Vehicle Cards Container -->
+        <div id="vehicleGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <!-- Populated by JavaScript -->
+        </div>
+
+        <!-- Empty State when no filter matches -->
+        <div id="emptyState" class="hidden text-center py-16 bg-white rounded-2xl border border-slate-200 mt-6">
+            <div class="w-16 h-16 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center mx-auto mb-4 text-2xl">
+                <i class="fa-solid fa-car-burst"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900">No Matching Vehicles Found</h3>
+            <p class="text-slate-500 mt-2 max-w-md mx-auto">We couldn't find a vehicle matching your exact search. You can reset filters or request us to import your desired model directly from Japan or Dubai.</p>
+            <div class="mt-6 flex justify-center gap-3">
+                <button onclick="resetFilters()" class="px-5 py-2.5 rounded-xl bg-slate-900 text-white font-semibold text-sm">Show All Cars</button>
+                <button onclick="openCustomOrderModal()" class="px-5 py-2.5 rounded-xl bg-amber-500 text-slate-950 font-semibold text-sm">Request Custom Import</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- High-Resolution Online Photo Gallery Section -->
+    <section id="gallery" class="bg-slate-900 text-white py-16 sm:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-amber-400">Visual Showcase</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold mt-1">HD Showroom &amp; Port Delivery Gallery</h2>
+                    <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl">Browse real high-definition photography of our imported fleet, luxury interiors, port arrivals, and Swat showroom deliveries. Click any photo to inspect in full screen.</p>
+                </div>
+                <!-- Gallery Filter Tabs -->
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="filterGallery('all', this)" class="gallery-tab active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-amber-500 text-slate-950 transition">All Photos (12)</button>
+                    <button onclick="filterGallery('suv', this)" class="gallery-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">4x4 &amp; SUVs</button>
+                    <button onclick="filterGallery('luxury', this)" class="gallery-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Luxury &amp; Sedans</button>
+                    <button onclick="filterGallery('interior', this)" class="gallery-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Interiors &amp; Engines</button>
+                </div>
+            </div>
+
+            <!-- Gallery Masonry-Style Responsive Grid -->
+            <div id="photoGalleryGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Import & Export Services Section -->
+    <section id="services" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+            <span class="text-xs font-bold uppercase tracking-widest text-amber-600">End-to-End Automotive Trade</span>
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-2">Complete Import &amp; Export Solutions</h2>
+            <p class="text-slate-600 mt-3 text-sm sm:text-base">Whether you are buying a Grade-5 Japanese hybrid in Mingora or exporting vehicles internationally, Swat Import &amp; Export Cars handles every step with total transparency.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <!-- Service 1 -->
+            <div class="bg-white p-7 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center text-xl mb-5">
+                    <i class="fa-solid fa-gavel"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-2">Live Japan &amp; Dubai Auctions</h3>
+                <p class="text-slate-600 text-sm leading-relaxed mb-4">Direct bidding access to USS, TAA, CAA, and JU auctions in Japan as well as Al Aweer Auto Market in Dubai. Verified auction sheets provided prior to bidding.</p>
+                <ul class="text-xs font-semibold text-slate-700 space-y-2">
+                    <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i>Original Japanese Auction Sheet Verification</li>
+                    <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i>Pre-Shipment Physical Inspection Photos</li>
+                </ul>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="bg-white p-7 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-600 flex items-center justify-center text-xl mb-5">
+                    <i class="fa-solid fa-ship"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-2">Port Clearance &amp; Carrier Delivery</h3>
+                <p class="text-slate-600 text-sm leading-relaxed mb-4">Hassle-free customs clearance at Karachi Port &amp; Port Qasim, complete duty settlement, and insured car-carrier transport straight to our Swat showroom.</p>
+                <ul class="text-xs font-semibold text-slate-700 space-y-2">
+                    <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i>Complete Customs &amp; Excise Documentation</li>
+                    <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i>Doorstep Delivery Across KPK &amp; Islamabad</li>
+                </ul>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="bg-white p-7 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center text-xl mb-5">
+                    <i class="fa-solid fa-globe"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-2">Global Vehicle Export &amp; Trade</h3>
+                <p class="text-slate-600 text-sm leading-relaxed mb-4">We facilitate cross-border vehicle sourcing, Ro-Ro and container shipping, and export documentation for dealers and private buyers across the Middle East and Central Asia.</p>
+                <ul class="text-xs font-semibold text-slate-700 space-y-2">
+                    <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i>Containerized &amp; Ro-Ro Maritime Logistics</li>
+                    <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i>Export Certificates &amp; Bill of Lading</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Import Duty & Landed Cost Estimator -->
+    <section id="calculator" class="bg-slate-100 py-16 sm:py-20 border-y border-slate-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl shadow-lg border border-slate-200 overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-12">
+                    <!-- Calculator Controls -->
+                    <div class="lg:col-span-7 p-6 sm:p-10">
+                        <span class="text-xs font-bold uppercase tracking-widest text-amber-600">Instant Planning Tool</span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1 mb-2">Import Landed Cost Estimator</h2>
+                        <p class="text-slate-500 text-sm mb-6">Estimate total landed cost in Swat including auction price, freight, customs duty, and carrier charges.</p>
+
+                        <div class="space-y-5">
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-slate-700 mb-1.5">Engine Capacity Category</label>
+                                <select id="calcEngine" onchange="calculateImportCost()" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm font-semibold bg-white outline-none focus:border-amber-500">
+                                    <option value="660">Up to 660cc (Kei Cars: Alto, Mira, N-Box)</option>
+                                    <option value="1000">801cc – 1000cc (Vitz, Passo, Raize)</option>
+                                    <option value="1500" selected>1301cc – 1500cc Hybrid (Aqua, Yaris, Vezel)</option>
+                                    <option value="1800">1501cc – 1800cc Hybrid (Prius, Corolla Cross, C-HR)</option>
+                                    <option value="2800">2700cc – 4500cc SUV (Prado, Fortuner, Land Cruiser)</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-slate-700 mb-1.5">Auction / FOB Price (in USD $)</label>
+                                <input type="number" id="calcFobUsd" value="12500" min="1000" max="200000" step="500" oninput="calculateImportCost()" 
+                                       class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm font-bold outline-none focus:border-amber-500">
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold uppercase text-slate-700 mb-1.5">Import Origin</label>
+                                    <select id="calcOrigin" onchange="calculateImportCost()" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm font-semibold bg-white outline-none focus:border-amber-500">
+                                        <option value="japan">Japan (Yokohama / Kobe)</option>
+                                        <option value="uae">UAE (Jebel Ali, Dubai)</option>
+                                        <option value="uk">United Kingdom</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold uppercase text-slate-700 mb-1.5">Powertrain Type</label>
+                                    <select id="calcHybrid" onchange="calculateImportCost()" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm font-semibold bg-white outline-none focus:border-amber-500">
+                                        <option value="hybrid">Hybrid Electric (HEV)</option>
+                                        <option value="petrol">Petrol / Diesel</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Results Panel -->
+                    <div class="lg:col-span-5 bg-slate-900 text-white p-6 sm:p-10 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-lg font-bold text-amber-400 mb-4 flex items-center gap-2">
+                                <i class="fa-solid fa-calculator"></i>
+                                <span>Estimated Breakdown</span>
+                            </h3>
+                            <div class="space-y-3 text-sm border-b border-slate-800 pb-5">
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">Vehicle CIF Value (PKR):</span>
+                                    <span id="resCif" class="font-semibold">PKR 3,850,000</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">Est. Customs Duty &amp; Taxes:</span>
+                                    <span id="resDuty" class="font-semibold">PKR 2,450,000</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">Port Clearance &amp; Swat Carrier:</span>
+                                    <span id="resLogistics" class="font-semibold">PKR 165,000</span>
+                                </div>
+                            </div>
+                            <div class="mt-5">
+                                <span class="text-xs uppercase tracking-wider text-slate-400">Estimated Total Landed in Swat</span>
+                                <p id="resTotal" class="text-2xl sm:text-3xl font-extrabold text-white mt-1">PKR 6,465,000</p>
+                                <p class="text-[11px] text-slate-400 mt-2">*Indicative estimate subject to SRO notifications, vehicle age depreciation &amp; exchange rates.</p>
+                            </div>
+                        </div>
+
+                        <button onclick="openCustomOrderModal()" class="mt-6 w-full py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm transition">
+                            Get Exact Quote From Our Team
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Showroom Location Section -->
+    <section id="contact" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+            <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-amber-600">Visit Our Showroom</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-2 mb-4">Swat Import &amp; Export Cars</h2>
+                <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-8">
+                    Inspect our ready stock in person, review original Japanese auction sheets over a cup of tea, or discuss custom import and export partnerships directly with our directors.
+                </p>
+
+                <div class="space-y-5">
+                    <div class="flex items-start gap-4">
+                        <div class="w-11 h-11 rounded-xl bg-slate-900 text-amber-400 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Head Office &amp; Main Showroom</h4>
+                            <p class="text-sm text-slate-600">Main G.T. Road, Near Fizagat Bypass, Mingora, District Swat, Khyber Pakhtunkhwa, Pakistan</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-11 h-11 rounded-xl bg-slate-900 text-amber-400 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-phone-volume"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Sales, Import &amp; Export Desk</h4>
+                            <p class="text-sm text-slate-600">Direct Call / WhatsApp: +92 300 1234567 | +92 345 9876543</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-11 h-11 rounded-xl bg-slate-900 text-amber-400 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Showroom Hours</h4>
+                            <p class="text-sm text-slate-600">Saturday – Thursday: 9:30 AM – 8:30 PM (Friday: 2:30 PM – 8:30 PM)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Direct Inquiry Form -->
+            <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-lg">
+                <h3 class="text-xl font-bold text-slate-900 mb-2">Send Direct Inquiry</h3>
+                <p class="text-sm text-slate-500 mb-6">Have a question about a car in stock, trade-in, or export shipping? Message us now.</p>
+
+                <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Full Name *</label>
+                            <input type="text" required placeholder="e.g., Tariq Khan" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm outline-none focus:border-amber-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Phone / WhatsApp *</label>
+                            <input type="tel" required placeholder="e.g., +92 300 0000000" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm outline-none focus:border-amber-500">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Inquiry Purpose</label>
+                        <select class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm bg-white outline-none focus:border-amber-500">
+                            <option>Buy a Vehicle From Showroom Stock</option>
+                            <option>Import Custom Car from Japan / Dubai</option>
+                            <option>Export Vehicles Internationally</option>
+                            <option>Sell or Exchange My Current Car</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Message / Car Details *</label>
+                        <textarea rows="3" required placeholder="Tell us the car model, year, budget, or export destination..." class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm outline-none focus:border-amber-500"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-3.5 rounded-xl bg-slate-900 hover:bg-amber-500 text-white hover:text-slate-950 font-bold text-sm transition shadow-md">
+                        Submit Inquiry to Swat Showroom
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-slate-800">
+                <div>
+                    <div class="flex items-center gap-3 text-white mb-3">
+                        <div class="w-9 h-9 rounded-lg bg-amber-500 text-slate-950 flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-car-side"></i>
+                        </div>
+                        <span class="font-extrabold text-lg tracking-tight">SWAT IMPORT &amp; EXPORT CARS</span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                        Premier automobile importers, exporters, and luxury dealership serving Swat Valley, Malakand Division, and nationwide clients with certified vehicles.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-3">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#inventory" class="hover:text-amber-400 transition">Showroom Inventory</a></li>
+                        <li><a href="#gallery" class="hover:text-amber-400 transition">HD Photo Gallery</a></li>
+                        <li><a href="#calculator" class="hover:text-amber-400 transition">Import Duty Estimator</a></li>
+                        <li><button onclick="openCustomOrderModal()" class="hover:text-amber-400 transition">Auction Bidding Request</button></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-3">Global Sourcing Hubs</h4>
+                    <p class="text-sm text-slate-400 mb-3">Tokyo &amp; Yokohama (Japan) • Dubai (UAE) • London (UK) • Karachi Port • Mingora, Swat</p>
+                    <div class="flex gap-3">
+                        <a href="#contact" class="w-9 h-9 rounded-lg bg-slate-800 hover:bg-amber-500 hover:text-slate-950 flex items-center justify-center text-white transition"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#contact" class="w-9 h-9 rounded-lg bg-slate-800 hover:bg-amber-500 hover:text-slate-950 flex items-center justify-center text-white transition"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#contact" class="w-9 h-9 rounded-lg bg-slate-800 hover:bg-emerald-500 flex items-center justify-center text-white transition"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-2">
+                <p>&copy; 2026 Swat Import &amp; Export Cars. All Rights Reserved.</p>
+                <p>Mingora, Swat, Khyber Pakhtunkhwa, Pakistan</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Quick Chat Button -->
+    <a href="https://wa.me/923001234567?text=Assalam-o-Alaikum%20Swat%20Import%20%26%20Export%20Cars,%20I%20would%20like%20to%20inquire%20about%20a%20vehicle." 
+       target="_blank" rel="noopener noreferrer"
+       class="fixed bottom-5 right-5 z-40 flex items-center gap-2.5 bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-3 rounded-full shadow-2xl transition transform hover:scale-105">
+        <i class="fa-brands fa-whatsapp text-2xl"></i>
+        <span class="text-sm font-bold hidden sm:inline">Chat on WhatsApp</span>
+    </a>
+
+    <!-- Vehicle Details & Multi-Photo Modal -->
+    <div id="vehicleModal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-sm overflow-y-auto p-4 sm:p-6 flex items-center justify-center">
+        <div class="bg-white rounded-3xl max-w-4xl w-full overflow-hidden shadow-2xl border border-slate-200 my-auto">
+            <div class="flex justify-between items-center px-6 py-4 border-b border-slate-100">
+                <div>
+                    <span id="modalBadge" class="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-amber-100 text-amber-800">Japan Import</span>
+                    <h3 id="modalTitle" class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-1">Vehicle Title</h3>
+                </div>
+                <button onclick="closeVehicleModal()" class="w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-700 transition">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <div class="p-6 max-h-[80vh] overflow-y-auto">
+                <!-- Main Active Photo -->
+                <div class="relative rounded-2xl overflow-hidden bg-slate-900 aspect-video mb-3">
+                    <img id="modalMainImage" src="" alt="Car Preview" class="w-full h-full object-cover">
+                    <div id="modalGradeTag" class="absolute top-3 left-3 bg-slate-950/85 text-amber-400 text-xs font-bold px-3 py-1.5 rounded-lg backdrop-blur-sm">
+                        Auction Grade: 4.5
+                    </div>
+                </div>
+
+                <!-- Thumbnail Strip -->
+                <div id="modalThumbnails" class="grid grid-cols-4 gap-2.5 mb-6">
+                    <!-- Thumbnails populated dynamically -->
+                </div>
+
+                <!-- Specs Grid -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                        <span class="block text-[11px] uppercase text-slate-400 font-bold">Model Year</span>
+                        <span id="modalYear" class="text-sm font-extrabold text-slate-900">2023</span>
+                    </div>
+                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                        <span class="block text-[11px] uppercase text-slate-400 font-bold">Mileage</span>
+                        <span id="modalMileage" class="text-sm font-extrabold text-slate-900">18,500 km</span>
+                    </div>
+                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                        <span class="block text-[11px] uppercase text-slate-400 font-bold">Engine / Fuel</span>
+                        <span id="modalEngine" class="text-sm font-extrabold text-slate-900">2800cc Diesel</span>
+                    </div>
+                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                        <span class="block text-[11px] uppercase text-slate-400 font-bold">Transmission</span>
+                        <span id="modalTransmission" class="text-sm font-extrabold text-slate-900">Automatic 4WD</span>
+                    </div>
+                </div>
+
+                <!-- Description & Features -->
+                <div class="mb-6">
+                    <h4 class="font-bold text-slate-900 text-sm uppercase tracking-wider mb-2">Inspection &amp; Feature Highlights</h4>
+                    <p id="modalDescription" class="text-sm text-slate-600 leading-relaxed mb-3"></p>
+                    <div id="modalFeatures" class="flex flex-wrap gap-2"></div>
+                </div>
+
+                <!-- Price & Booking Footer -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-5 border-t border-slate-200">
+                    <div>
+                        <span class="text-xs font-bold uppercase text-slate-400">Demand / Export Price</span>
+                        <p id="modalPrice" class="text-2xl font-extrabold text-slate-900">PKR 18,500,000</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <button onclick="copyCarSummary()" class="px-4 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-sm font-bold transition">
+                            <i class="fa-regular fa-copy mr-1.5"></i>Copy Specs
+                        </button>
+                        <a id="modalWhatsappBtn" href="#" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-bold text-center transition">
+                            <i class="fa-brands fa-whatsapp mr-1.5"></i>Inquire on WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Auction Order Modal -->
+    <div id="customOrderModal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-sm overflow-y-auto p-4 flex items-center justify-center">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-extrabold text-slate-900">Request Custom Auction Import</h3>
+                <button onclick="closeCustomOrderModal()" class="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <p class="text-sm text-slate-500 mb-5">Tell us the exact car you want from Japan, Dubai, or UK auctions. Our team will send you live auction sheet options within 24 hours.</p>
+            <form onsubmit="handleCustomOrderSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Your Name *</label>
+                    <input type="text" required placeholder="Enter your name" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm outline-none focus:border-amber-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-600 mb-1">WhatsApp Number *</label>
+                    <input type="tel" required placeholder="+92 3XX XXXXXXX" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm outline-none focus:border-amber-500">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Desired Car *</label>
+                        <input type="text" required placeholder="e.g. Toyota Prado" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm outline-none focus:border-amber-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Model Year</label>
+                        <input type="text" placeholder="e.g. 2022 - 2025" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm outline-none focus:border-amber-500">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Preferred Grade &amp; Color</label>
+                    <input type="text" placeholder="e.g. Grade 4.5+, Pearl White or Black" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm outline-none focus:border-amber-500">
+                </div>
+                <button type="submit" class="w-full py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm transition">
+                    Submit Auction Request
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Fullscreen Lightbox for Gallery Photos -->
+    <div id="lightboxModal" onclick="closeLightbox()" class="fixed inset-0 z-50 hidden bg-slate-950/95 p-4 flex flex-col items-center justify-center">
+        <button onclick="closeLightbox()" class="absolute top-5 right-5 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-xl">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <img id="lightboxImg" src="" alt="Full Screen Vehicle" class="max-h-[82vh] max-w-full rounded-2xl shadow-2xl object-contain" onclick="event.stopPropagation()">
+        <p id="lightboxCaption" class="text-white font-semibold text-sm sm:text-base mt-4 text-center"></p>
+    </div>
+
+    <!-- Non-Blocking Toast Notification Banner -->
+    <div id="toastBanner" class="fixed bottom-20 right-5 z-50 hidden bg-slate-900 text-white px-5 py-3.5 rounded-xl shadow-2xl border border-slate-700 flex items-center gap-3 text-sm font-medium">
+        <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+        <span id="toastMessage">Action completed successfully!</span>
+    </div>
+
+    <script>
+        // =========================================================================
+        // 1. COMPREHENSIVE SHOWROOM INVENTORY DATA (WITH REAL HIGH-RES AUTOMOTIVE PHOTOS)
+        // =========================================================================
+        const vehicles = [
+            {
+                id: 1,
+                title: "Toyota Land Cruiser Prado TX-L",
+                year: 2022,
+                category: "SUV / 4x4",
+                origin: "Japan Import",
+                grade: "Grade 4.5",
+                pricePkr: 24500000,
+                priceDisplay: "PKR 2.45 Crore",
+                mileage: "21,400 km",
+                engine: "2700cc Petrol",
+                transmission: "Automatic 4WD",
+                description: "Fresh Japan import ideal for Swat and northern mountain highways. Features Beige Leather Interior, Sunroof, 7-Seater Electric Seats, 360-Degree Camera, and Modellista Body Kit.",
+                features: ["Sunroof", "Beige Leather", "7 Seater", "Modellista Kit", "360 Camera", "Original Auction Sheet"],
+                images: [
+                    "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1000&q=80"
+                ]
+            },
+            {
+                id: 2,
+                title: "Toyota Hilux Revo Rocco 4x4",
+                year: 2023,
+                category: "Pickup",
+                origin: "Dubai / UAE",
+                grade: "Grade 5.0",
+                pricePkr: 16800000,
+                priceDisplay: "PKR 1.68 Crore",
+                mileage: "12,000 km",
+                engine: "2800cc Turbo Diesel",
+                transmission: "6-Speed Auto 4x4",
+                description: "Dubai-spec Hilux Rocco with heavy-duty suspension, rear differential lock, blacked-out sports bar, LED projector headlamps, and dual-zone climate control.",
+                features: ["4x4 Diff Lock", "2.8L Turbo Diesel", "Rocco Styling", "Apple CarPlay", "Unregistered"],
+                images: [
+                    "https://images.unsplash.com/photo-1559416523-140ddc3d238c?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1000&q=80"
+                ]
+            },
+            {
+                id: 3,
+                title: "Toyota Prius Z Hybrid (New Shape)",
+                year: 2023,
+                category: "Sedan",
+                origin: "Japan Import",
+                grade: "Grade 5.0",
+                pricePkr: 11200000,
+                priceDisplay: "PKR 1.12 Crore",
+                mileage: "9,800 km",
+                engine: "1800cc Hybrid",
+                transmission: "E-CVT Automatic",
+                description: "Ultra-fuel-efficient 5th Generation Toyota Prius Z package. Delivers 28+ km/l fuel average with panoramic glass roof, digital rearview mirror, and Toyota Safety Sense.",
+                features: ["28 km/l Hybrid", "Panoramic Roof", "Heated/Ventilated Seats", "19-inch Alloys", "Radar Cruise"],
+                images: [
+                    "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=1000&q=80"
+                ]
+            },
+            {
+                id: 4,
+                title: "Honda Vezel e:HEV Z Play",
+                year: 2022,
+                category: "SUV / 4x4",
+                origin: "Japan Import",
+                grade: "Grade 4.5",
+                pricePkr: 12400000,
+                priceDisplay: "PKR 1.24 Crore",
+                mileage: "19,200 km",
+                engine: "1500cc e:HEV Hybrid",
+                transmission: "Automatic",
+                description: "Two-tone Pearl White with Black Roof. Equipped with Honda Sensing, hands-free power tailgate, wireless charger, and dual-motor hybrid powertrain.",
+                features: ["Two-Tone Roof", "Honda Sensing", "Power Tailgate", "Wireless Charging", "Verified Sheet"],
+                images: [
+                    "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=1000&q=80"
+                ]
+            },
+            {
+                id: 5,
+                title: "Mercedes-Benz C200 AMG Line",
+                year: 2021,
+                category: "Sedan",
+                origin: "UK Spec",
+                grade: "Grade 4.5",
+                pricePkr: 19500000,
+                priceDisplay: "PKR 1.95 Crore",
+                mileage: "24,000 km",
+                engine: "1500cc Mild Hybrid",
+                transmission: "9G-Tronic Auto",
+                description: "Executive UK-spec Mercedes C200 AMG Line in Obsidian Black. Includes Burmester surround sound, 64-color ambient lighting, panoramic sliding sunroof, and AMG alloy wheels.",
+                features: ["AMG Body Styling", "Burmester Audio", "Ambient Lighting", "Panoramic Sunroof", "9G-Tronic"],
+                images: [
+                    "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80"
+                ]
+            },
+            {
+                id: 6,
+                title: "Toyota Raize Z Hybrid",
+                year: 2023,
+                category: "SUV / 4x4",
+                origin: "Japan Import",
+                grade: "Grade 4.5",
+                pricePkr: 7450000,
+                priceDisplay: "PKR 74.50 Lac",
+                mileage: "14,600 km",
+                engine: "1200cc e-Smart Hybrid",
+                transmission: "Automatic",
+                description: "Compact urban & mountain crossover with high ground clearance, 360-degree parking camera, blind-spot monitor, and sequential LED turn signals.",
+                features: ["High Ground Clearance", "360 Camera", "Adaptive Cruise", "LED Headlamps", "26 km/l Average"],
+                images: [
+                    "https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=1000&q=80"
+                ]
+            },
+            {
+                id: 7,
+                title: "Suzuki Alto Hybrid X (Japan)",
+                year: 2023,
+                category: "Hatchback",
+                origin: "Japan Import",
+                grade: "Grade 4.5",
+                pricePkr: 3650000,
+                priceDisplay: "PKR 36.50 Lac",
+                mileage: "11,200 km",
+                engine: "660cc ENE-Charge Hybrid",
+                transmission: "Automatic CVT",
+                description: "Top-of-the-line Japanese Alto Hybrid X with retractable mirrors, push start, radar braking, dual airbags, and exceptional 30 km/l fuel economy.",
+                features: ["30 km/l Fuel Economy", "Push Start", "Radar Brake Support", "Climate Control", "4.5 Grade"],
+                images: [
+                    "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1000&q=80"
+                ]
+            },
+            {
+                id: 8,
+                title: "Toyota Land Cruiser ZX V6 Twin-Turbo",
+                year: 2022,
+                category: "SUV / 4x4",
+                origin: "Ready for Export",
+                grade: "Grade 5.0",
+                pricePkr: 68500000,
+                priceDisplay: "PKR 6.85 Crore",
+                mileage: "8,500 km",
+                engine: "3500cc V6 Twin-Turbo",
+                transmission: "10-Speed Auto 4WD",
+                description: "Flagship LC300 ZX available for local delivery or international export. Features Rear Entertainment Screens, Cool Box, Fingerprint Start, Hydraulic Suspension, and JBL 14-Speaker Audio.",
+                features: ["LC300 ZX Flagship", "Rear Entertainment", "JBL Premium Audio", "Export Ready Docs", "Grade 5.0"],
+                images: [
+                    "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1000&q=80"
+                ]
+            }
+        ];
+
+        // =========================================================================
+        // 2. ONLINE HD PHOTO GALLERY ITEMS
+        // =========================================================================
+        const galleryItems = [
+            { url: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=900&q=80", category: "suv", caption: "Toyota Land Cruiser 4x4 Ready for Northern Terrain" },
+            { url: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=900&q=80", category: "luxury", caption: "Mercedes-Benz AMG Line Showroom Arrival" },
+            { url: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80", category: "luxury", caption: "Performance Coupe Inspection at Swat Yard" },
+            { url: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=900&q=80", category: "interior", caption: "Grade-5 Verified Cockpit & Digital Cluster" },
+            { url: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=900&q=80", category: "suv", caption: "Toyota Prado TX-L Pearl White Japan Import" },
+            { url: "https://images.unsplash.com/photo-1559416523-140ddc3d238c?auto=format&fit=crop&w=900&q=80", category: "suv", caption: "4x4 Off-Road Pickup Fleet for Swat & Kalam" },
+            { url: "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&w=900&q=80", category: "luxury", caption: "Hybrid Executive Sedan Direct Port Clearance" },
+            { url: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=900&q=80", category: "interior", caption: "Premium Leather Cabin & Infotainment Inspection" },
+            { url: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=900&q=80", category: "suv", caption: "Compact Crossover Hybrid SUV Collection" },
+            { url: "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=900&q=80", category: "luxury", caption: "Export-Ready Sports & Luxury Inventory" },
+            { url: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=900&q=80", category: "interior", caption: "Multi-Point Mechanical & Chassis Verification" },
+            { url: "https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=900&q=80", category: "suv", caption: "Mingora Showroom Featured Stock Lineup" }
+        ];
+
+        let activeModalVehicle = null;
+
+        // =========================================================================
+        // 3. RENDER SHOWROOM INVENTORY CARDS
+        // =========================================================================
+        function renderVehicles(list) {
+            const grid = document.getElementById('vehicleGrid');
+            const emptyState = document.getElementById('emptyState');
+            const countLabel = document.getElementById('vehicleCount');
+
+            countLabel.textContent = `Showing ${list.length} Vehicle${list.length === 1 ? '' : 's'}`;
+
+            if (list.length === 0) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            grid.innerHTML = list.map(car => `
+                <article class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group">
+                    <!-- Car Image Header -->
+                    <div class="relative aspect-[16/10] bg-slate-900 overflow-hidden cursor-pointer" onclick="openVehicleModal(${car.id})">
+                        <img src="${car.images[0]}" 
+                             onerror="this.src='https://placehold.co/800x500/0f172a/f59e0b?text=${encodeURIComponent(car.title)}'"
+                             alt="${car.title}" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-3 left-3 flex gap-1.5">
+                            <span class="px-2.5 py-1 rounded-lg bg-slate-950/85 text-white text-xs font-bold backdrop-blur-sm">${car.origin}</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-amber-500 text-slate-950 text-xs font-extrabold">${car.grade}</span>
+                        </div>
+                        <div class="absolute bottom-3 right-3 px-2.5 py-1 rounded-lg bg-slate-950/80 text-white text-xs font-semibold backdrop-blur-sm">
+                            <i class="fa-regular fa-images mr-1 text-amber-400"></i>${car.images.length} Photos
+                        </div>
+                    </div>
+
+                    <!-- Card Body -->
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between text-xs font-semibold text-slate-500 mb-1">
+                                <span>${car.category}</span>
+                                <span>Model ${car.year}</span>
+                            </div>
+                            <h3 onclick="openVehicleModal(${car.id})" class="text-lg font-extrabold text-slate-900 group-hover:text-amber-600 transition cursor-pointer line-clamp-1">
+                                ${car.title}
+                            </h3>
+
+                            <!-- Quick Spec Pills -->
+                            <div class="grid grid-cols-3 gap-2 my-4 text-center">
+                                <div class="bg-slate-50 rounded-xl py-2 px-1 border border-slate-100">
+                                    <span class="block text-[10px] uppercase text-slate-400 font-bold">Mileage</span>
+                                    <span class="text-xs font-bold text-slate-800">${car.mileage}</span>
+                                </div>
+                                <div class="bg-slate-50 rounded-xl py-2 px-1 border border-slate-100">
+                                    <span class="block text-[10px] uppercase text-slate-400 font-bold">Engine</span>
+                                    <span class="text-xs font-bold text-slate-800 truncate block px-1">${car.engine.split(' ')[0]}</span>
+                                </div>
+                                <div class="bg-slate-50 rounded-xl py-2 px-1 border border-slate-100">
+                                    <span class="block text-[10px] uppercase text-slate-400 font-bold">Drive</span>
+                                    <span class="text-xs font-bold text-slate-800 truncate block px-1">${car.transmission.split(' ')[0]}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Price & Action -->
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
+                            <div>
+                                <span class="block text-[10px] uppercase font-bold text-slate-400">Showroom Demand</span>
+                                <span class="text-lg font-extrabold text-slate-900">${car.priceDisplay}</span>
+                            </div>
+                            <button onclick="openVehicleModal(${car.id})" class="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-amber-500 text-white hover:text-slate-950 text-xs font-bold transition">
+                                Inspect &amp; Photos
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        // =========================================================================
+        // 4. FILTER & SORT INVENTORY
+        // =========================================================================
+        function filterVehicles() {
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase().trim();
+            const category = document.getElementById('categoryFilter').value;
+            const origin = document.getElementById('originFilter').value;
+            const sortBy = document.getElementById('sortSelect').value;
+
+            let filtered = vehicles.filter(car => {
+                const matchesSearch = car.title.toLowerCase().includes(searchQuery) ||
+                                      car.engine.toLowerCase().includes(searchQuery) ||
+                                      car.year.toString().includes(searchQuery);
+                const matchesCategory = category === 'ALL' || car.category === category;
+                const matchesOrigin = origin === 'ALL' || car.origin === origin;
+                return matchesSearch && matchesCategory && matchesOrigin;
+            });
+
+            if (sortBy === 'price-low') {
+                filtered.sort((a, b) => a.pricePkr - b.pricePkr);
+            } else if (sortBy === 'price-high') {
+                filtered.sort((a, b) => b.pricePkr - a.pricePkr);
+            } else if (sortBy === 'year-new') {
+                filtered.sort((a, b) => b.year - a.year);
+            }
+
+            renderVehicles(filtered);
+        }
+
+        function resetFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('categoryFilter').value = 'ALL';
+            document.getElementById('originFilter').value = 'ALL';
+            document.getElementById('sortSelect').value = 'featured';
+            renderVehicles(vehicles);
+        }
+
+        // =========================================================================
+        // 5. PHOTO GALLERY & LIGHTBOX
+        // =========================================================================
+        function renderGallery(filterCat = 'all') {
+            const container = document.getElementById('photoGalleryGrid');
+            const items = filterCat === 'all' ? galleryItems : galleryItems.filter(i => i.category === filterCat);
+
+            container.innerHTML = items.map(item => `
+                <div onclick="openLightbox('${item.url}', '${item.caption.replace(/'/g, "\\'")}')" 
+                     class="group relative aspect-square rounded-2xl overflow-hidden bg-slate-800 cursor-pointer border border-slate-700/60">
+                    <img src="${item.url}" 
+                         onerror="this.src='https://placehold.co/600x600/1e293b/f59e0b?text=Swat+Cars+Gallery'"
+                         alt="${item.caption}" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3.5">
+                        <p class="text-xs font-semibold text-white leading-snug">${item.caption}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterGallery(category, btnElement) {
+            document.querySelectorAll('.gallery-tab').forEach(btn => {
+                btn.classList.remove('bg-amber-500', 'text-slate-950');
+                btn.classList.add('bg-slate-800', 'text-slate-300');
+            });
+            btnElement.classList.remove('bg-slate-800', 'text-slate-300');
+            btnElement.classList.add('bg-amber-500', 'text-slate-950');
+            renderGallery(category);
+        }
+
+        function openLightbox(url, caption) {
+            document.getElementById('lightboxImg').src = url;
+            document.getElementById('lightboxCaption').textContent = caption;
+            document.getElementById('lightboxModal').classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightboxModal').classList.add('hidden');
+        }
+
+        // =========================================================================
+        // 6. VEHICLE INSPECTION MODAL
+        // =========================================================================
+        function openVehicleModal(carId) {
+            const car = vehicles.find(v => v.id === carId);
+            if (!car) return;
+            activeModalVehicle = car;
+
+            document.getElementById('modalBadge').textContent = car.origin;
+            document.getElementById('modalTitle').textContent = `${car.title} (${car.year})`;
+            document.getElementById('modalGradeTag').textContent = `Verified ${car.grade}`;
+            document.getElementById('modalMainImage').src = car.images[0];
+            document.getElementById('modalYear').textContent = car.year;
+            document.getElementById('modalMileage').textContent = car.mileage;
+            document.getElementById('modalEngine').textContent = car.engine;
+            document.getElementById('modalTransmission').textContent = car.transmission;
+            document.getElementById('modalDescription').textContent = car.description;
+            document.getElementById('modalPrice').textContent = car.priceDisplay;
+
+            // Populate Thumbnails
+            const thumbContainer = document.getElementById('modalThumbnails');
+            thumbContainer.innerHTML = car.images.map((imgUrl, idx) => `
+                <button onclick="switchModalPhoto('${imgUrl}')" class="rounded-xl overflow-hidden aspect-video border-2 ${idx === 0 ? 'border-amber-500' : 'border-transparent'} hover:border-amber-500 transition">
+                    <img src="${imgUrl}" alt="Thumbnail ${idx + 1}" class="w-full h-full object-cover">
+                </button>
+            `).join('');
+
+            // Populate Feature Badges
+            document.getElementById('modalFeatures').innerHTML = car.features.map(feat => `
+                <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">
+                    <i class="fa-solid fa-circle-check text-emerald-500 mr-1"></i>${feat}
+                </span>
+            `).join('');
+
+            // Update WhatsApp Direct Inquiry Link
+            const msg = `Assalam-o-Alaikum Swat Import & Export Cars, I am interested in ${car.title} (${car.year}) listed at ${car.priceDisplay}. Please share auction sheet & details.`;
+            document.getElementById('modalWhatsappBtn').href = `https://wa.me/923001234567?text=${encodeURIComponent(msg)}`;
+
+            document.getElementById('vehicleModal').classList.remove('hidden');
+        }
+
+        function switchModalPhoto(url) {
+            document.getElementById('modalMainImage').src = url;
+        }
+
+        function closeVehicleModal() {
+            document.getElementById('vehicleModal').classList.add('hidden');
+        }
+
+        function copyCarSummary() {
+            if (!activeModalVehicle) return;
+            const summary = `${activeModalVehicle.title} (${activeModalVehicle.year}) | ${activeModalVehicle.origin} | ${activeModalVehicle.grade} | ${activeModalVehicle.engine} | Price: ${activeModalVehicle.priceDisplay} - Swat Import & Export Cars`;
+            const tempInput = document.createElement('textarea');
+            tempInput.value = summary;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            showToast('Vehicle details copied to clipboard!');
+        }
+
+        // =========================================================================
+        // 7. IMPORT DUTY & LANDED COST CALCULATOR
+        // =========================================================================
+        function calculateImportCost() {
+            const engineCc = parseInt(document.getElementById('calcEngine').value, 10);
+            const fobUsd = parseFloat(document.getElementById('calcFobUsd').value) || 0;
+            const origin = document.getElementById('calcOrigin').value;
+            const powertrain = document.getElementById('calcHybrid').value;
+
+            const usdToPkr = 280;
+            const freightUsd = origin === 'japan' ? 1250 : (origin === 'uae' ? 750 : 1450);
+            const cifPkr = Math.round((fobUsd + freightUsd) * usdToPkr);
+
+            // Indicative customs duty & tax slabs
+            let baseDutyPkr = 1150000;
+            if (engineCc === 660) baseDutyPkr = 1150000;
+            else if (engineCc === 1000) baseDutyPkr = 1850000;
+            else if (engineCc === 1500) baseDutyPkr = 2650000;
+            else if (engineCc === 1800) baseDutyPkr = 3600000;
+            else if (engineCc === 2800) baseDutyPkr = 11500000;
+
+            if (powertrain === 'hybrid' && engineCc <= 1800) {
+                baseDutyPkr = Math.round(baseDutyPkr * 0.85);
+            }
+
+            const logisticsPkr = 165000; // Port clearing + car carrier to Mingora, Swat
+            const totalPkr = cifPkr + baseDutyPkr + logisticsPkr;
+
+            document.getElementById('resCif').textContent = `PKR ${cifPkr.toLocaleString()}`;
+            document.getElementById('resDuty').textContent = `PKR ${baseDutyPkr.toLocaleString()}`;
+            document.getElementById('resLogistics').textContent = `PKR ${logisticsPkr.toLocaleString()}`;
+            document.getElementById('resTotal').textContent = `PKR ${totalPkr.toLocaleString()}`;
+        }
+
+        // =========================================================================
+        // 8. UI HELPERS, MODALS & FORM SUBMISSIONS
+        // =========================================================================
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function openCustomOrderModal() {
+            document.getElementById('customOrderModal').classList.remove('hidden');
+        }
+
+        function closeCustomOrderModal() {
+            document.getElementById('customOrderModal').classList.add('hidden');
+        }
+
+        function handleCustomOrderSubmit(e) {
+            e.preventDefault();
+            e.target.reset();
+            closeCustomOrderModal();
+            showToast('Auction request received! Our Swat team will WhatsApp you shortly.');
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            e.target.reset();
+            showToast('Thank you! Your inquiry has been sent to Swat Import & Export Cars.');
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toastBanner');
+            document.getElementById('toastMessage').textContent = message;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 4000);
+        }
+
+        // Initialize showroom, gallery, and calculator on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            renderVehicles(vehicles);
+            renderGallery('all');
+            calculateImportCost();
+        });
+    </script>
+</body>
+</html>
